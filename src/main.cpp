@@ -3,6 +3,7 @@
 #include "../include/KnapsackSolver.hpp"
 
 using namespace std;
+using namespace Knapsack;
 
 int main(int argc, char *argv[])
 {

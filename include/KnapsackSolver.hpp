@@ -24,11 +24,10 @@ namespace Knapsack
 
             KnapsackSolver()
             {
-                
+
             }
             KnapsackSolver(int W, const vector<int>& weights, const vector<int>& values, int n): W(W), weights(weights), values(values)
             {
-
 
             }
             virtual ~KnapsackSolver() = default;
