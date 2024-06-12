@@ -8,7 +8,7 @@ using namespace Knapsack;
 
 int main(int argc, char *argv[])
 {
-    if(!argv[1] || strcmp(argv[1], "--PD") != 0 || strcmp(argv[1], "--bruteForce") != 0)
+    if(!argv[1] || (strcmp(argv[1], "--PD") != 0 && strcmp(argv[1], "--bruteForce") != 0))
     {
         cout<<"Error"<<endl;
 
