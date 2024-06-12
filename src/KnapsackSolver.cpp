@@ -29,7 +29,7 @@ int KnapsackSolver::PD(int W, const vector<int>& weights, const vector<int>& val
 }
 int KnapsackSolver::bruteForce(const std::vector<Item>& items, int maxWeight, int index) 
 {
-    if (index == items.size() || maxWeight == 0) 
+    if (index == (int)items.size() || maxWeight == 0) 
         return 0;
 
     if (items[index].weight > maxWeight)

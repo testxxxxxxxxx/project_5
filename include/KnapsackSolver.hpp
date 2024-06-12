@@ -17,16 +17,12 @@ namespace Knapsack
 
     class KnapsackSolver
     {
-        int W, n;
+        int W, n, maxWeight;
         const vector<int> weights, values;
 
         public:
 
             KnapsackSolver()
-            {
-
-            }
-            KnapsackSolver(int W, const vector<int>& weights, const vector<int>& values, int n): W(W), weights(weights), values(values)
             {
 
             }
