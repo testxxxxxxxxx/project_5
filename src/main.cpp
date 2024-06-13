@@ -22,16 +22,13 @@ int main(int argc, char *argv[])
     int capacity = 0;
     int n = 0;
 
-    cout<<"countOfItems>";
-    cin>>countOfItems;
-
     cout<<"capacity>";
     cin>>capacity;
 
     cout<<"n>";
     cin>>n;
 
-    for(int i = 0; i < countOfItems; i++)
+    for(int i = 0; i < n; i++)
     {
         cout<<"w"<<i<<">";
         cin>>weight;
@@ -40,7 +37,7 @@ int main(int argc, char *argv[])
 
     }
 
-    for(int i = 0; i < countOfItems; i++)
+    for(int i = 0; i < n; i++)
     {
         cout<<"p"<<i<<">";
         cin>>value;
