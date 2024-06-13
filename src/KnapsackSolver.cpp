@@ -54,6 +54,7 @@ vector<int> KnapsackSolver::PDResult(vector<vector<int>> dp, const vector<int>& 
 }
 int KnapsackSolver::getMaxResultPd(vector<vector<int>> dp, int W, int n)
 {
+    //Get max value from dynamic programming matrix
 
     return dp[n][W];
 }
