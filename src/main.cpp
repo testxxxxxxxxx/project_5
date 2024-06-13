@@ -16,7 +16,6 @@ int main(int argc, char *argv[])
     }
 
     vector<int> weights, values;
-    int countOfItems = 0;
     int weight = 0;
     int value = 0;
     int capacity = 0;
@@ -28,7 +27,7 @@ int main(int argc, char *argv[])
     cout<<"n>";
     cin>>n;
 
-    for(int i = 0; i < n; i++)
+    for(int i = 1; i <= n; i++)
     {
         cout<<"w"<<i<<">";
         cin>>weight;
@@ -37,7 +36,7 @@ int main(int argc, char *argv[])
 
     }
 
-    for(int i = 0; i < n; i++)
+    for(int i = 1; i <= n; i++)
     {
         cout<<"p"<<i<<">";
         cin>>value;
@@ -48,8 +47,26 @@ int main(int argc, char *argv[])
 
     KnapsackSolver *knapsackSolver = new KnapsackSolver();
 
+    vector<vector<int>> pdMatrix;
+    vector<int> resultKnapsack;
+
     if(strcmp(argv[1], "--PD") == 0)
-        cout<<"Result: "<<knapsackSolver->PD(capacity, weights, values, n)<<endl;
+    {
+        pdMatrix = knapsackSolver->PDMatrix(capacity, weights, values, n);
+        resultKnapsack = knapsackSolver->PDResult(pdMatrix, weights, values, capacity, n);
+
+        cout<<"Value: "<<knapsackSolver->getMaxResultPd(pdMatrix, capacity, n)<<endl;
+        cout<<"Result:";
+
+        for(auto& i : resultKnapsack)
+        {
+            cout<<" "<<i;
+
+        }
+
+        cout<<endl;
+
+    }
     else if(strcmp(argv[1], "--bruteForce") == 0)
     {
 
