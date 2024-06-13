@@ -77,7 +77,7 @@ int main(int argc, char *argv[])
         cout<<"Value: "<<knapsackSolver->getMaxResultPd(pdMatrix, capacity, n)<<endl;
         cout<<"Result:";
 
-        for(int& i : resultKnapsack)
+        for(auto& i : resultKnapsack)
         {
             cout<<" "<<i;
 
