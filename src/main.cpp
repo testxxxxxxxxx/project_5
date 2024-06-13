@@ -89,7 +89,7 @@ int main(int argc, char *argv[])
 
         vector<int> elements;
 
-        int result = knapsackSolver->bruteForceResult(items, maxWeight, 0);
+        int result = knapsackSolver->bruteForceResult(items, maxWeight);
 
         cout<<"Value: "<<result<<endl;
 

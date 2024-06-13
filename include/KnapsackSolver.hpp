@@ -38,7 +38,7 @@ namespace Knapsack
             vector<vector<int>> PDMatrix(int W, const vector<int>& weights, const vector<int>& values, int n);
             vector<int> PDResult(vector<vector<int>> dp, const vector<int>& weights, const vector<int>& values, int W, int n);
             int getMaxResultPd(vector<vector<int>> dp, int W, int n);
-            int bruteForceResult(const std::vector<Item>& items, int maxWeight, int index);
+            int bruteForceResult(const vector<Item>& items, int maxWeight);
             vector<int> bruteForce(const vector<Item>& items, int maxWeight);
             Result bruteForceHelper(const std::vector<Item>& items, int maxWeight, int index);
 

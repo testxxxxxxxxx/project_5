@@ -57,23 +57,16 @@ int KnapsackSolver::getMaxResultPd(vector<vector<int>> dp, int W, int n)
 
     return dp[n][W];
 }
-int KnapsackSolver::bruteForceResult(const std::vector<Item>& items, int maxWeight, int index) 
-{
-    if (index == (int)items.size() || maxWeight == 0) 
-        return 0;
-
-    if (items[index].weight > maxWeight)
-        return this->bruteForceResult(items, maxWeight, index + 1);
-
-    int includeItem = items[index].value + this->bruteForceResult(items, maxWeight - items[index].weight, index + 1);
-    int excludeItem = this->bruteForceResult(items, maxWeight, index + 1);
-
-    return max(includeItem, excludeItem);
-}
 vector<int> KnapsackSolver::bruteForce(const vector<Item>& items, int maxWeight) 
 {
     Result result = this->bruteForceHelper(items, maxWeight, 0);
     return result.selectedIndices;
+}
+int KnapsackSolver::bruteForceResult(const vector<Item>& items, int maxWeight)
+{
+    Result result = this->bruteForceHelper(items, maxWeight, 0);
+
+    return result.value;
 }
 Result KnapsackSolver::bruteForceHelper(const std::vector<Item>& items, int maxWeight, int index) 
 {
