@@ -28,30 +28,6 @@ vector<vector<int>> KnapsackSolver::PDMatrix(int W, const vector<int>& weights, 
     }
 
     return dp;
-    //search solution
-
-    /*int col = W;
-
-    for(int i = n; i >= 1; i--)
-    {
-        cout<<dp[i][col]<<endl;
-
-        if(dp[i][col] > dp[i - 1][col])
-        {
-            result.push_back(i);
-
-            col -= weights[i];   
-        }
-        else if(dp[i][col] == dp[i - 1][col])
-            col--;
-
-    }
-
-    for(auto& i : result)
-    {
-        cout<<"i: "<<i<<endl;
-
-    }*/
 }
 vector<int> KnapsackSolver::PDResult(vector<vector<int>> dp, const vector<int>& weights, const vector<int>& values, int W, int n)
 {
@@ -81,16 +57,41 @@ int KnapsackSolver::getMaxResultPd(vector<vector<int>> dp, int W, int n)
 
     return dp[n][W];
 }
-int KnapsackSolver::bruteForce(const std::vector<Item>& items, int maxWeight, int index) 
+int KnapsackSolver::bruteForceResult(const std::vector<Item>& items, int maxWeight, int index) 
 {
     if (index == (int)items.size() || maxWeight == 0) 
         return 0;
 
     if (items[index].weight > maxWeight)
-        return this->bruteForce(items, maxWeight, index + 1);
+        return this->bruteForceResult(items, maxWeight, index + 1);
 
-    int includeItem = items[index].value + this->bruteForce(items, maxWeight - items[index].weight, index + 1);
-    int excludeItem = this->bruteForce(items, maxWeight, index + 1);
+    int includeItem = items[index].value + this->bruteForceResult(items, maxWeight - items[index].weight, index + 1);
+    int excludeItem = this->bruteForceResult(items, maxWeight, index + 1);
 
     return max(includeItem, excludeItem);
+}
+vector<int> KnapsackSolver::bruteForce(const vector<Item>& items, int maxWeight) 
+{
+    Result result = this->bruteForceHelper(items, maxWeight, 0);
+    return result.selectedIndices;
+}
+Result KnapsackSolver::bruteForceHelper(const std::vector<Item>& items, int maxWeight, int index) 
+{
+    if (index == (int)items.size() || maxWeight == 0)
+         return {0, {}};
+
+    if (items[index].weight > maxWeight)
+            return this->bruteForceHelper(items, maxWeight, index + 1);
+
+    Result includeResult = this->bruteForceHelper(items, maxWeight - items[index].weight, index + 1);
+    includeResult.value += items[index].value;
+    includeResult.selectedIndices.push_back(index);
+
+    Result excludeResult = this->bruteForceHelper(items, maxWeight, index + 1);
+
+    if (includeResult.value > excludeResult.value) 
+            return includeResult;
+    else 
+            return excludeResult;
+
 }
