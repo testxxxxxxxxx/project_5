@@ -43,10 +43,10 @@ vector<int> KnapsackSolver::PDResult(vector<vector<int>> dp, const vector<int>& 
         {
             result.push_back(i);
 
+            cout<<"w: "<<i<<endl;
+
             col -= weights[i];   
         }
-        else if(dp[i][col] == dp[i - 1][col])
-            col--;
 
     }
 
